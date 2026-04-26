@@ -1,0 +1,35 @@
+header {
+  width: 100%;
+  height: 60px;
+  background-color: rgba(235, 231, 227, 0.607);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1000;
+  padding-left: 10px;
+}
+header .hpart1 {
+  width: 22%;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+header .hpart1 ul {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+header .hpart2 {
+  width: 22%;
+  display: flex;
+  align-items: center;
+}
+header .hpart2 ul {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+header .hpart2 ul .login {
+  cursor: pointer;
+}/*# sourceMappingURL=header.css.map */

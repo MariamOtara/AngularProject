@@ -1,0 +1,67 @@
+<main>
+
+<div class="part1">
+<h2>Menu</h2>
+<p>Showing {{ data.products.length }} products</p>
+</div>
+<section class="section1">
+<aside>
+  <div class="filter">
+<input [(ngModel)]="search" (input)="onSearchChange()" type="search" name="" id="" placeholder="Search">
+<h4>Categories</h4>
+<div class="filter-group">
+  @for (item of category.category; track item.id) {
+    <label class="filter-label">
+      <input 
+        type="checkbox" 
+        [checked]="categoryId === item.id" 
+        (change)="onSelectCategory(item.id)"
+      >
+      {{ item.name }}
+    </label>
+  } @empty {
+    <p>Loading categories...</p>
+  }
+</div>
+<label for="">Vegetarian
+  <input [(ngModel)]="vegeterian" (change)="filter()" type="checkbox" name="" id="" autocomplete="off">
+</label>
+<input min = "0" max = "5" step="1" [(ngModel)] = "rate" (input)="filter()" type="range" name="" id="">
+<p>Rating: {{ rate }} </p>
+<input min = "0" max = "5" step="1" [(ngModel)] = "spiciness" (input)="filter()" type="range" name="" id="">
+<p>level: {{ spiciness }} </p>
+<input min = "0" max = "100" [(ngModel)] = "minPrice" (input)="filter() "type="range" name="" id="">
+<p>Min price:$ {{ minPrice }} + </p>
+<input min = "0" max = "100" [(ngModel)] = "maxPrice" (input)="filter()" title="Current Value" oninput="this.title = this.value" type="range" name="" id="">
+<p>Max price:$ {{ maxPrice }} </p>
+<button (click)="resetFilter()">Clear All Filters</button>
+</div>
+</aside>
+<section class="section2">
+<div class="part2">
+    @for (product of data.products; track $index){
+    <div class="productCard">
+      <img  routerLink="/details" [queryParams]="{ id: product.id }"[src]="product.image" [alt]="product.name" class="productImage" />
+          <div class="text" routerLink="/details" [queryParams]="{ id: product.id }">
+        <h3 class="productTitle">{{ product.name }}</h3>
+        <p class="productDescription">{{ product.description }}</p>
+        <p class="productRate"><i class="fa-solid fa-star"></i> {{ product.rate }}</p>
+        <p class="productPrice">${{ product.price }}</p>      
+        <button routerLink="/cart" >Add to Cart</button>
+      </div>
+    </div>
+  } 
+</div>
+
+<button (click)="prevPage()" [disabled]="page === 1">
+  Prev
+</button>
+
+<span>Page {{ page }}</span>
+
+<button (click)="nextPage()" [disabled]="!hasMore">
+  Next
+</button>
+</section>
+</section>
+</main>

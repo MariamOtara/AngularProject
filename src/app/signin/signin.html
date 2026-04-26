@@ -1,0 +1,11 @@
+
+
+<form [formGroup]="signInForm" (ngSubmit)="register()">
+<input type="text" formControlName = "firstName" placeholder=" First Name">
+<input type="text" formControlName = "lastName" placeholder="Last Name">
+<input type="email" formControlName = "email" placeholder="Email">
+<input type="password" formControlName = "password" placeholder="Password">
+<button [disabled]="!signInForm.valid">Sign In</button>
+</form>
+
+

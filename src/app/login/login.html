@@ -1,0 +1,7 @@
+<form action="" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <input type="email" name="email" id="" placeholder="Email" ngModel email required>
+    <input type="password" name="password" id="" placeholder="Password" ngModel required minlength="6">
+    <button [disabled]="loginForm.invalid" routerLink="/profile" [queryParams]="{id: userId}">Sign In</button>
+</form>
+
+<a routerLink="/signin">Don't have an account?</a>

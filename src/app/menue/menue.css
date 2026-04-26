@@ -1,0 +1,77 @@
+aside {
+  padding-top: 80px;
+}
+aside .filter {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  row-gap: 10px;
+}
+aside .filter input {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  width: 100%;
+  height: 300vh;
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+section .part1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+section .part2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 10px;
+}
+section .productCard {
+  width: 250px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 10px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  min-width: 250px;
+}
+section .productCard .text {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  cursor: pointer;
+}
+section .productCard .text .productTitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  overflow: hidden;
+}
+section .productCard .text .productDescription {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
+}
+section .productCard .productImage {
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}/*# sourceMappingURL=menue.css.map */

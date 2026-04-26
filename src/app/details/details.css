@@ -1,0 +1,27 @@
+.details {
+  width: 100%;
+  padding-top: 80px;
+  display: flex;
+  padding-left: 40px;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.details .dpart1 img {
+  width: 300px;
+}
+.details .dpart2 {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.details .dpart2 .productCard .text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.details .dpart2 .productCard .text button {
+  width: 200px;
+  height: 30px;
+}/*# sourceMappingURL=details.css.map */

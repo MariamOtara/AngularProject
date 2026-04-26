@@ -1,0 +1,47 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ApiAuth } from '../services/api-auth';
+import { Router } from '@angular/router';;
+
+@Component({
+  selector: 'app-signin',
+  standalone: true,
+  imports: [ReactiveFormsModule],
+  templateUrl: './signin.html',
+  styleUrl: './signin.scss',
+})
+export class Signin {
+     signInForm: FormGroup;
+   constructor (
+   private apiAuth : ApiAuth,
+   private router : Router,
+   private fb: FormBuilder
+  ) {
+
+this.signInForm = this.fb.group ({
+  firstName: ["", [Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
+  lastName: ["",[Validators.required, Validators.pattern(/^[A-Za-z]+$/)]],
+  email: ["", [Validators.required, Validators.email]],
+  password: ["", [Validators.required,Validators.minLength(6), Validators.pattern(/^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).+$/)
+  ]]
+})
+
+}
+  register(){
+console.log(this.signInForm.value);
+console.log(this.signInForm.invalid);
+
+    if (this.signInForm.valid) {
+    this.apiAuth.register(this.signInForm.value).subscribe({
+      next: (resp: any) => {
+        console.log(resp);
+        this.router.navigateByUrl('/login')
+      },
+      error: (er) => {
+        alert(er.message);
+        console.log('BACKEND MESSAGE:', er.error);
+      }
+    });
+  }
+}
+}

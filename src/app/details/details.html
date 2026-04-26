@@ -1,0 +1,20 @@
+<section class="details">
+<div class="dpart1">
+    <img [src]="data.image" [alt]="data.name" class="productImage"/>
+</div>
+<div class="dpart2">
+    <div class="productCard">
+      <div class="text">
+        <h3 class="productTitle">{{ data.name }}</h3>
+        <p class="productDescription">{{ data.description }}</p>
+        <p class="productRate">Rating: {{ data.rate }}</p>
+        <p class="productPrice">${{ data.price }}</p>
+        @if(data.vegetarian == true){<p>Vegetarian</p>} @else {<p>Not Vegetarian</p>}
+             <p>{{data.method}}</p>
+             <p><strong>Ingredients</strong></p>
+             <p>{{data.ingredients}}</p>
+        <button routerLink="/cart">Add to Cart</button>
+      </div>
+    </div>
+</div>
+</section>
