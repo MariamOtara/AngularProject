@@ -18,11 +18,19 @@ export class Category {
     canDelete!: boolean;
 }
 
-export class Cart {
+export class CartItem {
     id!: number;
     quantity!: number;
     product!: ProductsClass;
 }
+
+export class CartClass {
+    items!: CartItem[];
+    totalItems?: number;
+    totalPrice!: number;
+}
+
+
 
 export class ProductID{
     name!: string;
@@ -71,7 +79,6 @@ export class Categories{
    
   ]
 }
-
 
 
 

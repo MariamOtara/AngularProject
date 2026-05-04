@@ -27,6 +27,7 @@ this.signInForm = this.fb.group ({
 })
 
 }
+showResendButton = false
   register(){
 console.log(this.signInForm.value);
 console.log(this.signInForm.invalid);
@@ -38,10 +39,13 @@ console.log(this.signInForm.invalid);
         this.router.navigateByUrl('/login')
       },
       error: (er) => {
-        alert(er.message);
-        console.log('BACKEND MESSAGE:', er.error);
+        if (er.error.detail.includes('already exists')) {
+          this.showResendButton = true;
+        }
+        alert(er.error.detail);
       }
     });
   }
 }
+
 }

@@ -12,6 +12,5 @@ export const apiKeyInterceptor: HttpInterceptorFn = (req, next) => {
     });
     return next(modifiedReq);
   }
-
   return next(req);
 };

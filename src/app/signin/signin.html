@@ -5,7 +5,16 @@
 <input type="text" formControlName = "lastName" placeholder="Last Name">
 <input type="email" formControlName = "email" placeholder="Email">
 <input type="password" formControlName = "password" placeholder="Password">
+@if (signInForm.get('password')?.errors?.['pattern'] && signInForm.get('password')?.touched) {
+  <small style="color: red;">The password must contain a capital letter and a special character!</small>
+}
 <button [disabled]="!signInForm.valid">Sign In</button>
+@if (showResendButton) {
+    <div class="confirm">
+      <p>Confirmation problems?</p>    
+      
+    </div>
+  } 
 </form>
 
 

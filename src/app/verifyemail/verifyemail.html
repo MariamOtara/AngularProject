@@ -1,0 +1,13 @@
+<div class="verify-box">
+  <h3>Подтверждение для: {{ email }}</h3>
+  
+  <input 
+    type="text" 
+    [(ngModel)]="verificationCode" 
+    placeholder="Введите код"
+  >
+  
+  <button (click)="verifyByCode()">Подтвердить код</button>
+  
+  <button (click)="resend()">Отправить код еще раз</button>
+</div>

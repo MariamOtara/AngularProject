@@ -1,1 +1,12 @@
-<p>profile works!</p>
+@if (data) {
+  <div class="profile-container">
+      <h2>Welcome, {{ data.firstName }} {{ data.lastName }}</h2>
+      <div class="info-card">
+          <p><strong>Email:</strong> {{ data.email }}</p>
+      </div>
+  </div>
+} @else {
+  <div class="loading">
+      <p>Loading profile...</p>
+  </div>
+}

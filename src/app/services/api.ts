@@ -10,15 +10,11 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class Api {
 private apiUrl = 'https://restaurantapi.stepacademy.ge/'
 
-
-
 constructor(private http: HttpClient) {}
 
 getDatafromApi( url: string ){
   return this.http.get(this.apiUrl + url);
 }
-
-
 }
 
 

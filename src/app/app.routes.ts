@@ -22,8 +22,16 @@ export const routes: Routes = [
     loadComponent: () => import('./details/details').then(m => m.Details)},
     {path:'profile',
      loadComponent: () => import('./profile/profile').then(m => m.Profile),
-    
+    canActivate:[authGuard]
     },
+    {path:'verifyemail',
+     loadComponent: () => import('./verifyemail/verifyemail').then(m => m.Verifyemail),
+     },
+     {path:'resetpassword',
+     loadComponent: () => import('./resetpassword/resetpassword').then(m => m.Resetpassword),
+     },
+
     {path: '**',
     loadComponent: () => import('./error/error').then(m => m.Error)},
 ];
+//canActivate:[authGuard]

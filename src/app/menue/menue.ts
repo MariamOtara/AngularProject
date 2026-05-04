@@ -13,7 +13,7 @@ import { RouterLinkWithHref } from "@angular/router";
   styleUrl: './menue.scss',
 })
 export class MenueComponent implements OnInit {
-  isFiltered: any;
+  isFiltered: boolean = false;
   categoryId: number | null = null;
   constructor(private api: Api, private cdr : ChangeDetectorRef) {}
   data: { products: ProductsClass[] } = { products: [] };
@@ -55,25 +55,23 @@ search = ""
   this.loadProducts();
 }
   loadProducts(): void {
-  this.loading = true;
-
-  if (!this.isFiltered) {
+  this.loading = true;  
+  const hasSearch = this.search && this.search.trim().length > 0;  
+  const useFilter = this.isFiltered || hasSearch;
+  const urlPath = useFilter ? 'api/products/filter' : 'api/products'; 
+  let params = `Take=${this.take}&Page=${this.page}`;  
+  if (useFilter) {
+     if (hasSearch) params += `&query=${encodeURIComponent(this.search.trim())}`;
     
-    const url = `api/products?Take=${this.take}&Page=${this.page}`;
-    this.fetchData(url);
-  } else {
-    
-    let params = `Take=${this.take}&Page=${this.page}`;
-    if (this.search) params += `&Search=${this.search}`;
     if (this.categoryId) params += `&CategoryId=${this.categoryId}`;
     if (this.vegeterian) params += `&Vegetarian=true`;
     if (this.spiciness > 0) params += `&Spiciness=${this.spiciness}`;
     if (this.rate > 0) params += `&Rate=${this.rate}`;
     
     params += `&MinPrice=${this.minPrice}&MaxPrice=${this.maxPrice}`;
-
-    this.fetchData(`api/products/filter?${params}`);
   }
+ 
+  this.fetchData(`${urlPath}?${params}`);
 }
 
 
@@ -110,7 +108,7 @@ resetFilter(): void {
   this.maxPrice = 100;
   this.vegeterian = false;
   this.categoryId = null;
-  
+  this.search = "";
   }
 
 loadCategory():void {
@@ -139,6 +137,5 @@ onSelectCategory(id: number): void {
   this.loadProducts();
 }
 allProducts: ProductsClass[] = []; 
-
 
 }
